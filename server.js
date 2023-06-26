@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 4001;
-const { quotes } = require('./data');
+const { quotes, addQuote } = require('./data');
 const { getRandomElement } = require('./utils');
 
 
@@ -33,6 +33,24 @@ app.get('/api/quotes', (req, res) => {
         quotes: requestedQuotes
     })    
 });
+
+// post a quote
+app.post('/api/quotes', (req, res) => {
+    if(req.query.quote.length == 0 || req.query.person.length == 0){
+        console.log('Must have both quote and author!')
+        res.status(400).send()
+    }
+    console.log(req.query.person)
+    console.log(req.query.quote)
+    const quoteToAdd = {
+        quote : req.query.quote,
+        person: req.query.person
+    }
+    addQuote(quoteToAdd);
+    res.send({
+        quote: quoteToAdd
+    })
+})
 
 app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`)
