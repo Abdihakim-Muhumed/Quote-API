@@ -24,5 +24,6 @@ const updateElement = (id, queryArguments, elementList) => {
 
 module.exports = {
   getRandomElement,
-  getIndexById
+  getIndexById,
+  updateElement
 };
