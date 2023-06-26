@@ -65,6 +65,18 @@ app.put('/api/quotes/:id', (req, res) => {
     
 })
 
+//delete a quote
+app.delete('/api/quotes/:id', (req, res) => {
+    const index = getIndexById(req.params.id, quotes)
+    if(index == -1){
+        res.status(400).send()
+    }
+    const removedQuote = quotes.splice(index, 1)
+    res.send({
+        quote: removedQuote
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`)
 });
