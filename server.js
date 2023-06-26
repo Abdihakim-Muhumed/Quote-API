@@ -3,7 +3,7 @@ const app = express();
 
 const PORT = process.env.PORT || 4001;
 const { quotes, addQuote } = require('./data');
-const { getRandomElement } = require('./utils');
+const { getRandomElement, getIndexById, updateElement} = require('./utils');
 
 
 app.use(express.static('public'));
@@ -50,6 +50,19 @@ app.post('/api/quotes', (req, res) => {
     res.send({
         quote: quoteToAdd
     })
+})
+
+//update a quote;
+app.put('/api/quotes/:id', (req, res) => {
+    const index = getIndexById(req.params.id, quotes);
+    if(index == -1){
+        res.status(400).send()
+    }
+    const updatedElement = updateElement(req.params.id, req.query, quotes);
+    res.send({
+        quote: updateElement
+    })
+    
 })
 
 app.listen(PORT, () => {
