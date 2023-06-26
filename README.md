@@ -21,4 +21,4 @@ This is a website to serve some random quotes about technology and computers and
  Email: abdihakim.muhumedo@gmail.com 
  Phone: +254759430440
 
- # Copyright (c) 2023 Abdihakim-Muhumed
+ # Copyright (c) 2023
