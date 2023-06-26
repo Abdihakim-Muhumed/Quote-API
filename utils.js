@@ -3,6 +3,13 @@ const getRandomElement = arr => {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+const getIndexById = (id, elementList) => {
+  return elementList.findIndex((element) => {
+    return element.id === Number(id);
+  });
+};
+
 module.exports = {
-  getRandomElement
+  getRandomElement,
+  getIndexById
 };
